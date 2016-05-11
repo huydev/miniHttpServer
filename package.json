@@ -1,6 +1,6 @@
 {
-  "name": "minhttpserver",
-  "version": "0.0.1",
+  "name": "minihttpserver",
+  "version": "0.0.2",
   "description": "",
   "main": "index.js",
   "bin": {
