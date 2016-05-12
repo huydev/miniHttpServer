@@ -1,9 +1,9 @@
 {
   "name": "minihttpserver",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "description": "this is a personal project, doesn't provide any technical support.",
   "bin": {
-    "minihttpserver": "./bin/minhttpserver.js"
+    "minihttpserver": "./bin/minihttpserver.js"
   },
   "scripts": {
     "dev": "nodemon --exec babel-node -- source/mnhs.js",
