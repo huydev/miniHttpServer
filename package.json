@@ -1,13 +1,12 @@
 {
   "name": "minihttpserver",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
-  "main": "index.js",
   "bin": {
-    "miniHS": "./bin/minhttpserver.js"
+    "minihttpserver": "./bin/minhttpserver.js"
   },
   "scripts": {
-    "start": "nodemon --exec babel-node -- index.js"
+    "start": "nodemon --exec babel-node -- index-es6.js"
   },
   "keywords": [],
   "author": "huydev",
