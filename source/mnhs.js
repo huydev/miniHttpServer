@@ -3,7 +3,7 @@ import fs from 'fs';
 import url from 'url';
 import qs from 'querystring';
 import path from 'path';
-import mime from './mime.json';
+import mime from '../mime.json';
 
 class miniHttpServer{
   constructor(port){
@@ -95,4 +95,4 @@ class miniHttpServer{
   }
 }
 
-export var miniHS2 = miniHttpServer;
+export var miniHS = miniHttpServer;

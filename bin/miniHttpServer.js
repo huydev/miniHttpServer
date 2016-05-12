@@ -2,12 +2,12 @@
 
 'use strict';
 var program = require('commander');
-var miniHS = require('../index.js');
+var miniHS = require('../dist/mnhs.js');
 
 
 var port = 0;
 program
-  .version('0.0.3')
+  .version('0.0.1')
   .usage('<keywords>')
   .option('-p, --port', 'set the server port.');
 
