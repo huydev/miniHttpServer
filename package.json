@@ -1,6 +1,6 @@
 {
   "name": "minihttpserver",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "this is a personal project, doesn't provide any technical support.",
   "bin": {
     "minihttpserver": "./bin/minhttpserver.js"
