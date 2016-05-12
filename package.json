@@ -1,12 +1,12 @@
 {
   "name": "minihttpserver",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "this is a personal project, doesn't provide any technical support.",
   "bin": {
     "minihttpserver": "./bin/minhttpserver.js"
   },
   "scripts": {
-    "dev": "nodemon --exec babel-node -- index-es6.js",
+    "dev": "nodemon --exec babel-node -- source/mnhs.js",
     "build": "babel source --out-dir dist"
   },
   "keywords": [],
