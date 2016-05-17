@@ -66,8 +66,8 @@ class miniHttpServer{
 
         let ext = path.extname(this.path);
         for(let type in mime){
-          if(ext === type){
-            res.writeHead(200, {'Content-Type' : type + ';charset=utf8;'});
+          if(ext === '.' + type){
+            res.writeHead(200, {'Content-Type' : mime[type] + ';charset=utf8;'});
             break;
           }
         }
@@ -96,3 +96,6 @@ class miniHttpServer{
 }
 
 export var miniHS = miniHttpServer;
+
+// for test
+//new miniHttpServer().run();
