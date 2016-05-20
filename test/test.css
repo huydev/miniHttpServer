@@ -1,0 +1,287 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+main, menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+img{border:0;}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, main, menu, nav, section {
+  display: block;
+}
+/**
+ * 1. 防止元素中「font-family」不能继承
+ * 2. 西文字体和 OS X 字体写在前面
+ * 3. Opera 12.1 之前版本不支持中文字体的英文名称
+ * 4. 微软雅黑「\5FAE\8F6F\96C5\9ED1」,中易宋体「\5B8B\4F53」
+ */
+body,
+button, /* 1 */
+input, /* 1 */
+select, /* 1 */
+textarea  /* 1 */
+{
+  font-family: 'helvetica neue',tahoma, arial, 'hiragino sans gb',stheiti,'wenquanyi micro hei', "微软雅黑", "Microsoft Yahei", sans-serif;
+}
+body {
+  line-height: 1;
+}
+
+/**
+ * 代码字体
+ */
+code,
+kbd,
+pre,
+samp {
+    font-family: monaco, menlo, consolas, 'courier new', courier, monospace, sans-serif;
+}
+
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+/* Don't kill focus outline for keyboard users: http://24ways.org/2009/dont-lose-your-focus */
+a:hover, a:active {
+    outline: none;
+}
+a{
+  text-decoration: none;
+}
+/* tables still need cellspacing="0" in the markup */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.header{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 79px;
+  border-bottom: 1px solid #44b549;
+  background: #fff;
+  overflow: hidden;
+  color: #333;
+}
+.header .logo{
+  float: left;
+  width: 195px;
+  height: 79px;
+  background: url(../images/logo.png) no-repeat center center;
+}
+.header .nav{
+  float: left;
+  height: 40px;
+  overflow: hidden;
+  margin-top: 39px;
+}
+.header .nav li{
+  float: left;
+  width: 90px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-weight: bold;
+}
+.header .nav a{
+  color: #333333;
+  text-decoration: none;
+}
+.header .nav li.active{
+  background: #44b549;
+}
+.header .nav li.active a{
+  color: #fff;
+}
+.sidebar{
+  position: absolute;
+  top: 80px;
+  left: 0;
+  bottom: 0;
+  width: 195px;
+  border-right: 1px solid #44b549;
+  font-size: 14px;
+  color: #333;
+}
+.sidebar-wrapper{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+}
+.main{
+  position: absolute;
+  top: 80px;
+  right: 0;
+  bottom: 0;
+  left: 196px;
+}
+.main-wrapper{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+/* 交班信息 */
+.sidebar-sysinfo{
+  overflow: hidden;
+  border-bottom: 1px solid #44b549;
+}
+.sidebar-sysinfo .cardid{
+  margin-top: 25px;
+  text-align: center;
+}
+.sidebar-sysinfo .cardid a{
+  display: inline-block;
+  width: 62px;
+  height: 28px;
+  line-height: 28px;
+  text-decoration: none;
+  border-radius: 3px;
+  background: #44b549;
+  color: #fff;
+  border: 0;
+  text-align: center;
+}
+.sidebar-sysinfo .cardid span{
+  display: inline-block;
+  margin-left: 10px;
+}
+.sidebar-sysinfo .status{
+  margin-left: 50px;
+}
+.sidebar-sysinfo .status li{
+  position: relative;
+  height: 23px;
+  line-height: 23px;
+  padding-left: 45px;
+  margin: 20px 0;
+}
+.sidebar-sysinfo .status li:after{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 23px;
+  height: 23px;
+  background: #77f;
+}
+.sidebar-sysinfo .status li.li1:after{
+  background: #1590fa;
+}
+.sidebar-sysinfo .status li.li2:after{
+  background: #d80c18;
+}
+.sidebar-sysinfo .status li.li3:after{
+  background: #cccccc;
+}
+.sidebar-sysinfo .status li.li4:after{
+  background: #f8ba42;
+}
+.sidebar-roominfo, .sidebar-totalinfo{
+  padding: 20px 0;
+  border-bottom: 1px solid #44b549;
+}
+.sidebar-roominfo table, .sidebar-totalinfo table{
+  table-layout: fixed;
+  margin-left: 20px;
+}
+.sidebar-roominfo table tr td, .sidebar-totalinfo table tr td{
+  height: 24px;
+}
+.sidebar-roominfo table tr td:first-child, .sidebar-totalinfo table tr td:first-child{
+  text-align: right;
+}
+.sidebar-totalinfo{
+  border-bottom: 0;
+}
+
+/* 侧边栏导航 */
+.sidebar-tit{
+  font-size: 16px;
+  font-weight: bold;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  margin-top: 20px;
+}
+.sidebar-nav.mt20{
+  margin-top: 20px;
+}
+.sidebar-nav a{
+  color: #333;
+}
+.sidebar-nav .item.active .tit{
+  background: #44b549;
+  color: #fff;
+}
+.sidebar-nav .item.nochild .tit i{
+  display: none;
+}
+.sidebar-nav .item .tit{
+  position: relative;
+  display: block;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 4em;
+  font-weight: bold;
+}
+.sidebar-nav .item .tit i{
+  position: absolute;
+  top: 12px;
+  right: 10px;
+  width: 16px;
+  height: 16px;
+  background: url(../images/sidebar-arrow.png) no-repeat 0 0;
+}
+.sidebar-nav .item .tit:hover{
+  background: #44b549;
+  color: #fff;
+}
+.sidebar-nav .item .tit:hover i{
+  background-position: -16px 0;
+}
+.sidebar-nav .item.active .tit i{
+  background-position: -16px -16px;
+}
+.sidebar-nav .item.active .subitem{
+  display: block;
+}
+.sidebar-nav .item .subitem{
+  display: none;
+}
+.sidebar-nav .item .subitem li{
+  height: 40px;
+  line-height: 40px;
+}
+.sidebar-nav .item .subitem li a{
+  display: block;
+  padding-left: 5em;
+}
+.sidebar-nav .item .subitem li.active a, .sidebar-nav .item .subitem li a:hover{
+  color: #44b549;
+}

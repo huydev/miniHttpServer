@@ -8,51 +8,14 @@ import mime from '../mime.json';
 class miniHttpServer{
   constructor(port){
     this.path = '';
-    this.port = port || 3000;
     this.root = '';
   }
-  run(){
-    http.createServer((req, res) => {
-      if(req.url == '/favicon.ico'){
-        return res.end('');
-      }
-      var urlOjb = url.parse(req.url);
-      this.root = process.cwd();
 
-      this.path = path.normalize( this.root + urlOjb.pathname );
-
-      res.setHeader('Content-Type', 'text/plain;charset=utf8;');
-
-      this.getStats().then((stats) => {
-        if(stats.isFile()){
-          this.dealFile(req, res).then((data) => {
-            res.write(data);
-            res.end();
-          }).catch((err) =>{
-            console.log('aaa' + err);
-          });
-        }else if(stats.isDirectory()){
-          this.dealPath(req, res).then((data) => {
-            res.write(data);
-            res.end();
-          }).catch((err) =>{
-            console.log('bbb' + err);
-          });
-        }else{
-          res.write('404');
-          res.end();
-        }
-      }).catch((err) =>{
-        console.log('ccc' + err);
-      });
-    }).listen(this.port, () => {
-      console.log('server start at ' + this.port);
-    });
-  }
   getStats(){
     let promise = new Promise((resolve, reject) => {
+      console.log(1 + this.path);
       fs.stat(this.path, (err, stats) => {
-        
+        console.log(2 + this.path);
         if(err) return reject(err);
         resolve(stats);
       });
@@ -67,6 +30,7 @@ class miniHttpServer{
         let ext = path.extname(this.path);
         for(let type in mime){
           if(ext === '.' + type){
+            console.log(ext + '\t:' + this.path)
             res.writeHead(200, {'Content-Type' : mime[type] + ';charset=utf8;'});
             break;
           }
@@ -95,7 +59,51 @@ class miniHttpServer{
   }
 }
 
-export var miniHS = miniHttpServer;
+function startServer(port){
+  var port = port || 3000;
+  http.createServer((req, res) => {
+    if(req.url == '/favicon.ico'){
+      return res.end('');
+    }
+    var _this = new miniHttpServer();
+    var urlOjb = url.parse(req.url);
+    _this.root = process.cwd();
 
+    _this.path = path.normalize( _this.root + urlOjb.pathname );
+    console.log(_this.path);
+    res.setHeader('Content-Type', 'text/plain;charset=utf8;');
+
+    _this.getStats().then((stats) => {
+      console.log(3+_this.path)
+      if(stats.isFile()){
+        console.log(4+_this.path)
+        _this.dealFile(req, res).then((data) => {
+          res.write(data);
+          res.end();
+        }).catch((err) =>{
+          console.log('aaa' + err);
+        });
+      }else if(stats.isDirectory()){
+        _this.dealPath(req, res).then((data) => {
+          res.write(data);
+          res.end();
+        }).catch((err) =>{
+          console.log('bbb' + err);
+        });
+      }else{
+        res.write('404');
+        res.end();
+      }
+    }).catch((err) =>{
+      console.log('ccc' + err);
+    });
+  }).listen(port, () => {
+    console.log('server start at ' + port);
+  });
+}
 // for test
-//new miniHttpServer().run();
+//startServer();
+
+export var runServer = startServer;
+
+

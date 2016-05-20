@@ -7,7 +7,7 @@ var miniHS = require('../dist/mnhs.js');
 
 var port = 0;
 program
-  .version('0.0.1')
+  .version('1.1.0')
   .usage('<keywords>')
   .option('-p, --port', 'set the server port.');
 
