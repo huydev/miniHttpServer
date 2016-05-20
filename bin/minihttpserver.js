@@ -4,10 +4,11 @@
 var program = require('commander');
 var miniHS = require('../dist/mnhs.js');
 
+console.log(miniHS);
 
 var port = 0;
 program
-  .version('1.1.0')
+  .version('1.1.1')
   .usage('<keywords>')
   .option('-p, --port', 'set the server port.');
 
@@ -17,6 +18,6 @@ if(!program.args.length){
 }else{
   if(program.port){
     port = parseInt(program.args);
-    new miniHS.miniHS(port).run();
+    new miniHS.runServer(port);
   }
 }
