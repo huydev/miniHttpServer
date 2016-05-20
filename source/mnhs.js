@@ -13,9 +13,7 @@ class miniHttpServer{
 
   getStats(){
     let promise = new Promise((resolve, reject) => {
-      console.log(1 + this.path);
       fs.stat(this.path, (err, stats) => {
-        console.log(2 + this.path);
         if(err) return reject(err);
         resolve(stats);
       });
@@ -27,10 +25,11 @@ class miniHttpServer{
       fs.readFile(this.path, (err, data) => {
         if(err) return reject(err);
 
+        console.log('request: ' + this.path);
+
         let ext = path.extname(this.path);
         for(let type in mime){
           if(ext === '.' + type){
-            console.log(ext + '\t:' + this.path)
             res.writeHead(200, {'Content-Type' : mime[type] + ';charset=utf8;'});
             break;
           }
@@ -70,32 +69,30 @@ function startServer(port){
     _this.root = process.cwd();
 
     _this.path = path.normalize( _this.root + urlOjb.pathname );
-    console.log(_this.path);
+
     res.setHeader('Content-Type', 'text/plain;charset=utf8;');
 
     _this.getStats().then((stats) => {
-      console.log(3+_this.path)
       if(stats.isFile()){
-        console.log(4+_this.path)
         _this.dealFile(req, res).then((data) => {
           res.write(data);
           res.end();
         }).catch((err) =>{
-          console.log('aaa' + err);
+          console.log('readFile: ' + err);
         });
       }else if(stats.isDirectory()){
         _this.dealPath(req, res).then((data) => {
           res.write(data);
           res.end();
         }).catch((err) =>{
-          console.log('bbb' + err);
+          console.log('readDir: ' + err);
         });
       }else{
         res.write('404');
         res.end();
       }
     }).catch((err) =>{
-      console.log('ccc' + err);
+      console.log('system Error: ' + err);
     });
   }).listen(port, () => {
     console.log('server start at ' + port);

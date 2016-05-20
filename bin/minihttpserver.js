@@ -4,11 +4,9 @@
 var program = require('commander');
 var miniHS = require('../dist/mnhs.js');
 
-console.log(miniHS);
-
 var port = 0;
 program
-  .version('1.1.1')
+  .version('1.1.2')
   .usage('<keywords>')
   .option('-p, --port', 'set the server port.');
 
