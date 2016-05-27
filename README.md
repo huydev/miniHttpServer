@@ -2,8 +2,8 @@
 
 自我练手的一个简单 http server.
 
-# How TO Use
+# How To Use
 
 `npm install minihttpserver -g`
 
-`minihttpserver`
+`minihttpserver -p port`

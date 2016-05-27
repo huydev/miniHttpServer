@@ -47,6 +47,7 @@ class miniHttpServer{
         var listr = '';
         for(var i=0, len=files.length; i<len; i++){
           var _path = path.relative(this.root, path.join(this.path, files[i]));
+          _path = _path.replace(/\\/g, "\/");
           listr += '<li><a href="/'+ _path + '">' + files[i] + '</a></li>';
         }
         var str = '<ul><li><a href="./../">..</a></li>' + listr + '</ul>';
